@@ -1,0 +1,377 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    
+
+}
+
+body {
+    background-color: #ffeae0;
+
+}
+
+/* Responsive Navbar */
+@media only screen and (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .nav ul li {
+        margin-bottom: 10px;
+    }
+
+    .nav .logo h1 {
+        margin-bottom: 10px;
+    }
+
+    .nav .logo {
+        margin-bottom: 20px;
+    }
+}
+
+/* Responsive Footer */
+@media only screen and (max-width: 768px) {
+    footer {
+        padding: 1rem;
+        margin-top: 100px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    footer h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    footer .contacts {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .social ul,
+    .personal-info ul {
+        text-align: center;
+    }
+
+    footer #copyright {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* Responsive Content */
+@media only screen and (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .content .left-content {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .content .left-content .info h2 {
+        font-size: 2rem;
+    }
+
+    .content .left-content .info p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .content .left-content .Explore {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .content .right-content img {
+        width: 100%;
+    }
+}
+
+
+/* menu */
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.nav .logo h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #000000;
+}
+
+.nav .logo b {
+    color: #ff511c;
+}
+
+.nav ul {
+    padding: 30px;
+    border-radius: 50px;
+    display: flex;
+    list-style: none;
+}
+
+.nav ul li a {
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    font-family: sans-serif;
+    font-size: 1 rem;
+}
+
+/* active  */
+.nav ul a:hover {
+    background-color: #ff511c;
+    color: aliceblue;
+
+}
+
+/* buttom */
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#sigin {
+    background: transparent;
+    border: none;
+}
+
+#sigin {
+    background-color: #ff511c;
+    color: aliceblue;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer; /* add a cursor pointer to indicate interactivity */
+}
+#logout{
+    background-color: #ff511c;
+    color: aliceblue;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* Content  */
+
+.content {
+    border: 5px solid black;
+    border-radius: 5px;
+    display: flex;
+    gap: 30px;
+    margin: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* content */
+/* left-content */
+
+.content .left-content {
+    margin-left: 30px;
+    display: block;
+    width: 100%;
+
+}
+
+.content .left-content .info {
+    /* border: 2px solid black; */
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+
+}
+
+.content .left-content .info h2 {
+    text-decoration: none;
+    font-size: 60px;
+    font-family: sans-serif;
+    margin-bottom: 30px;
+}
+
+.content .left-content .info p {
+
+    font-size: 20px;
+    line-height: 2pc;
+    margin-bottom: 30px;
+    font-family: sans-serif;
+}
+
+/* Content  */
+/* ----Button---- */
+
+.content .left-content .Explore {
+    padding: 10px 20px;
+    font-family: sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ff511c;
+    color: aliceblue;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
+}
+
+/* ---Content image */
+/* -----right-content-----*/
+.content .right-content {
+    display: block;
+    width: 100%;
+}
+
+.content .right-content img {
+    width: 700px;
+    height: auto;
+    position: relative;
+
+}
+
+
+/* ---------gallery-------- */
+.gallery {
+    margin-top: 300px;
+    margin-bottom: 100px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 15px;
+}
+
+.cards .red {
+    background-repeat: no-repeat;
+    background-size: contain;
+   
+}
+
+.cards .blue {
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.cards .green {
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.cards .card {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100px;
+    width: 350px;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.cards .card p.tip {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.cards .card p.second-text {
+    font-size: .7em;
+}
+
+.cards .card:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.cards:hover>.card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+}
+
+/* FOOTER SECTION */
+
+/* Styles for footer */
+
+footer {
+    max-width: 100%;
+    margin-top: 350px; /* Adjusted margin for better placement */
+    background-color: #ffeae0;
+    border: 5px solid black;
+    padding: 2rem 10rem; /* Increased padding for better spacing */
+    color: #000000;
+    display: flex; /* Changed display to flex for better alignment */
+    justify-content: space-between; /* Align items */
+    align-items: center; /* Align items */
+}
+
+footer h1 {
+    font-family: serif;
+    font-size: 2.5rem; /* Adjusted font size for better proportion */
+    margin: 0; /* Removed margin to align with flex container */
+}
+
+footer .contacts {
+    display: flex;
+    justify-content: space-around;
+    width: 50%; /* Adjusted width for better alignment */
+}
+
+.social,
+.personal-info {
+    height: 100%;
+}
+
+.social ul,
+.personal-info ul {
+    list-style: none;
+    padding: 0; /* Removed default padding */
+}
+
+.social ul li,
+.personal-info ul li {
+    font-size: 1.2rem; /* Adjusted font size for better readability */
+    margin-bottom: 5px; /* Added margin bottom for better spacing */
+}
+
+footer #copyright {
+    font-size: 1rem; /* Adjusted font size for better proportion */
+    padding: 5px 0; /* Adjusted padding for better spacing */
+}
+
+.cr {
+    text-align: center;
+    width: 50%; /* Adjusted width for better alignment */
+}

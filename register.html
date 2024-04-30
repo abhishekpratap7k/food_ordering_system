@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <div class="container">
+            <label for="uname">Enter your name: </label>
+            <input type="text" id="uname" placeholder="Enter name"><br>
+            <div class="unum">Enter your Number: </div>
+            <input type="number" id="unum" placeholder="Enter Mobile no.">
+            <button id="btn" value="Send">Register</button>
+        <br>
+       
+        <label for="utable">Enter Table No: </label>
+        <select id="utable">
+            <option>-</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+
+    <script>
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optiona
+
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener('click', () => {
+            let uname = document.getElementById("uname").value;
+            let unum = document.getElementById("unum").value;
+            let utable = document.getElementById("utable").value;
+
+            // OTP LOGIC
+
+            if (uname.includes("1") == false && uname.includes("2") == false && uname.includes("3") == false && uname.includes("4") == false && uname.includes("5") == false && uname.includes("6") == false && uname.includes("7") == false && uname.includes("8") == false && uname.includes("9") == false && uname.includes("0") == false   ) {
+                if (uname!="" && unum != "" && utable != "-") {
+                    const url = 'https://phonenumbervalidatefree.p.rapidapi.com/ts_PhoneNumberValidateTest.jsp?number=%2B+91' + unum + '&country=IND';
+
+                    fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'X-RapidAPI-Key': '74fb00f531msh432e6634591c34bp1e0f56jsn985861aa91b7',
+                            'X-RapidAPI-Host': 'phonenumbervalidatefree.p.rapidapi.com'
+                        }
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            }
+                            throw new Error('Network response was not ok.');
+                        })
+                        .then(result => {
+                            // // console.log(result);
+                            // console.log(result.isValidNumber);
+                            // console.log(result.location);
+                            // console.log(result.carrier);
+                            // console.log(result.timeZone_s);
+
+                            let location =result.location;
+                            let carrier = result.carrier;
+                            let timeZone = result.timeZone_s;
+
+                            if (result.isValidNumber == true) {
+                                console.log("Number is valid");
+
+                                sessionStorage.setItem("name", uname);
+                                sessionStorage.setItem("mob", unum);
+                                sessionStorage.setItem("table", utable);
+                                sessionStorage.setItem("loggedIn", true);
+                                sessionStorage.setItem("orders", []);
+
+                                alert(`Logged in Successfully\nLocation: ${location}\nCarrier: ${carrier}\nTimeZone: ${timeZone}`);
+
+                                window.location.href = "demo.html";
+                            }
+                            else {
+                                console.log("Number is not valid");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('There was a problem with your fetch operation:', error);
+                        });
+                }
+                else{
+                    alert("Fleids can't be left blank");
+                }
+            }
+            else{
+                alert("Can't put number in Name");
+            }
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Menu</title>
+  <link rel="stylesheet" href="demo.css">
+</head>
+
+<body>
+  <div class="menu">
+    <div class="container">
+      <header>
+        <h1>Food Menu</h1>
+        <div class="shopping" onclick="toggleSidebar(); activateCartFunctionality();">
+          <img src="img/cart.svg" alt="" width="50px">
+          <span class="quantity" id="cart-quantity">0</span>
+        </div>
+      </header>
+      <ul>
+        <li data-price="300">
+          <img src="img/3.png" alt="">
+          <span>Pizza Slice</span>
+          <span>₹300</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="250">
+          <img src="img/5.png" alt="">
+          <span>Chicken Burger</span>
+          <span>₹250</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="200">
+          <img src="img/6.png" alt="">
+          <span>Noodles</span>
+          <span>₹200</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="180">
+          <img src="img/sandwich.png" alt="">
+          <span>Grilled Sandwich</span>
+          <span>₹180</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="150">
+          <img src="img/salad.png" alt="">
+          <span>Garden Salad</span>
+          <span>₹150</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="350">
+          <img src="img/butter_paneer.png" alt="">
+          <span>Butter Paneer</span>
+          <span>₹350</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="400">
+          <img src="img/dhokala.png" alt="">
+          <span>Dhokala</span>
+          <span>₹400</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="180">
+          <img src="img/culfi.png" alt="">
+          <span>Kulfi</span>
+          <span>₹180</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="220">
+          <img src="img/chicken_curry.png" alt="">
+          <span>Chicken Curry</span>
+          <span>₹220</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="120">
+          <img src="img/fries.png" alt="">
+          <span>French Fries</span>
+          <span>₹120</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="180">
+          <img src="img/maggi.png" alt="">
+          <span>Maggi Masala</span>
+          <span>₹180</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="160">
+          <img src="img/mendu_vada.png" alt="">
+          <span>Mendu Vada</span>
+          <span>₹160</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="220">
+          <img src="img/gulab_jammun.png" alt="">
+          <span>Gulab Jammun</span>
+          <span>₹220</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="150">
+          <img src="img/Masala-Dosa.png" alt="">
+          <span>Masala Dosa</span>
+          <span>₹150</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="300">
+          <img src="img/gujai.png" alt="">
+          <span>Gujia</span>
+          <span>₹300</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="400">
+          <img src="img/fish_curry.png" alt="">
+          <span>Fish Curry</span>
+          <span>₹400</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="280">
+          <img src="img/fenta.png" alt="">
+          <span>Fenta</span>
+          <span>₹280</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="300">
+          <img src="img/jelabai.png" alt="">
+          <span>Jelabi</span>
+          <span>₹300</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="200">
+          <img src="img/idli-chutney.png" alt="">
+          <span> Idli</span>
+          <span>₹200</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-price="200">
+          <img src="img/laddu.png" alt="">
+          <span>Laddu</span>
+          <span>₹200</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <!-- Add more food items similarly -->
+      </ul>
+    </div>
+    <div id="sidebar">
+      <div id="sidebar-content">
+        <div class="cart">
+          <h2>Cart</h2>
+          <ul id="cart-items">
+            <!-- Cart items will be added dynamically using JavaScript -->
+
+          </ul>
+          <div class="contentsidebar">
+          <div id="grand-total">
+            <span>Grand Total:</span>
+            <span id="total-price">₹0.00</span>
+          </div>
+          <button id="checkout" >Checkout</button> <!-- Add the checkout button -->
+        </div>
+        </div>
+        </div>
+
+        <script src="demo.js"></script>
+</body>
+
+</html>

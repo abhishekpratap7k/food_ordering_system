@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = () => {
+            const pass = prompt("Enter password");
+            if(pass != "abhi"){
+                alert("Invalid Password");
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+    <style>
+/* Styles for index.html */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.header {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+#orders {
+    margin-top: 20px;
+    padding: 0 20px; /* Added padding for better spacing */
+}
+
+.elements {
+    width: calc(100% - 40px); /* Adjusted width for padding */
+    padding: 20px;
+    margin: 0 auto 20px; /* Adjusted margin for better spacing */
+    border: 2px solid #4caf50; /* Limegreen */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    box-sizing: border-box; /* Added to include padding in width calculation */
+}
+
+.elements:hover {
+    transform: translateY(-5px);
+}
+
+.elements p {
+    padding: 10px;
+    font-size: larger;
+    font-weight: bold;
+    margin: 0;
+    flex-basis: 20%; /* Adjusted flex-basis for responsiveness */
+    text-align: center; /* Centered text */
+}
+
+.removebtn {
+    padding: 8px 15px;
+    font-size: large;
+    background-color: #ff4d4d; /* Red */
+    color: white;
+    border: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.removebtn:hover {
+    background-color: #ff6666; /* Lighter red on hover */
+}
+
+#total {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: #4caf50; /* Limegreen */
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: larger;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+#total:hover {
+    background-color: #45a049; /* Darker shade on hover */
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .elements {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+    }
+
+    .elements p {
+        flex-basis: 100%; /* Full width for paragraphs on smaller screens */
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin, See orders</h1>
+    </div>
+    <div id="orders">
+
+    </div>
+    <div id="total">
+
+    </div>
+</body>
+<script>
+    let orders = document.getElementById("orders");
+    const products = JSON.parse(sessionStorage.getItem(("orders")));
+
+    const makeOrder = (proname,proprice,qtn,prouname,protime,pronum) => {
+        let container = document.createElement("div");
+        container.classList.add("elements");
+        let uname = document.createElement("p");
+        let unum = document.createElement("p")
+        let name = document.createElement("p");
+        let price = document.createElement("p");
+        let quantity = document.createElement("p");
+        let time = document.createElement("p");
+        let tableNo = document.createElement("p");
+        let removebtn = document.createElement("button");
+        removebtn.classList.add("removebtn");
+        let text = document.createTextNode("Remove");
+        removebtn.appendChild(text);
+
+        const removeProduct = () => {
+            let total = document.getElementById("total");
+            total.remove();
+            orders.remove(container);
+        }
+        removebtn.addEventListener('click',removeProduct);
+
+        name.textContent = proname;
+        price.textContent = proprice;
+        quantity.textContent = qtn;
+        time.textContent = protime;
+        uname.textContent=prouname;
+        unum.textContent = pronum;
+        tableNo.textContent = sessionStorage.getItem("table");
+        container.appendChild(uname);
+        container.appendChild(unum);
+        container.appendChild(name);
+        container.appendChild(quantity);
+        container.appendChild(time);
+        container.appendChild(tableNo);
+        container.appendChild(price);
+        container.appendChild(removebtn);
+        orders.appendChild(container);
+    }
+    
+    const getOrders = () => {
+        const pro = Object.keys(products);
+        const uname = sessionStorage.getItem("name")
+        const unum =  sessionStorage.getItem("mob")
+        const time = sessionStorage.getItem("time");
+        let total = document.createElement("p");
+        let sumTotal = 0;
+        let totalCon = document.getElementById("total")
+
+        pro.map(ele => {
+            makeOrder(ele,products[ele].price,products[ele].quantity,uname,time,unum);
+            sumTotal += Number(products[ele].price);
+        });
+
+        total.textContent = `Total = ${sumTotal} Rs.`;
+        totalCon.appendChild(total);
+    }
+    getOrders();
+</script>
+</html>

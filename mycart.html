@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+/* Styles for index.html */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.heading {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 20px;
+}
+
+#orders {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+    overflow-y: auto; /* Change to auto for scroll only when needed */
+    border: 2px solid black;
+    padding: 10px; /* Added padding for better spacing */
+}
+
+.elements {
+    width: 85%;
+    padding: 20px;
+    border: 2px solid limegreen;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.elements:hover {
+    transform: translateY(-5px);
+}
+
+.elements p {
+    font-size: larger;
+    font-weight: bold;
+    margin: 0;
+}
+
+#total {
+    text-align: center;
+    width: 100%;
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+    border: 2px solid black;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    color: orange;
+    margin-top: 20px;
+    padding: 10px; /* Added padding for better spacing */
+}
+
+.removebtn {
+    padding: 8px 15px;
+    font-size: large;
+    background-color: red;
+    color: white;
+    border: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.removebtn:hover {
+    background-color: #ff6666; /* Lighter red on hover */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="heading">
+       <u> <p>Your Orders</p></u>
+    </div>
+    <div id="orders">
+        
+    </div>
+    <div id="total">
+
+    </div>
+</body>
+<script>
+    let orders = document.getElementById("orders");
+    const products = JSON.parse(sessionStorage.getItem(("orders")));
+
+    const makeOrder = (proname,proprice,qtn,protime) => {
+        let container = document.createElement("div");
+        container.classList.add("elements");
+        let name = document.createElement("p");
+        let price = document.createElement("p");
+        let quantity = document.createElement("p");
+        let time = document.createElement("p");
+        let tableNo = document.createElement("p");
+
+
+        name.textContent = proname;
+        price.textContent = proprice;
+        quantity.textContent = qtn;
+        time.textContent = protime;
+        tableNo.textContent = sessionStorage.getItem("table");
+        container.appendChild(name);
+        container.appendChild(quantity);
+        container.appendChild(time);
+        container.appendChild(price);
+        container.appendChild(tableNo);
+        // container.appendChild(removebtn);
+        orders.appendChild(container);
+
+
+       
+    }
+    
+    const getOrders = () => {
+        const pro = Object.keys(products);
+        const time = sessionStorage.getItem("time");
+        let total = document.createElement("p");
+        let sumTotal = 0;
+        let totalCon = document.getElementById("total")
+        pro.map(ele => {
+            makeOrder(ele,products[ele].price,products[ele].quantity,time);
+            console.log(products[ele]);
+            sumTotal += Number(products[ele].price);
+        });
+
+        total.textContent = `Total = ${sumTotal} Rs.`;
+        totalCon.appendChild(total);
+    }
+    getOrders();
+</script>
+</html>
